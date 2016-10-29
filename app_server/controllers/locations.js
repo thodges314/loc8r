@@ -4,7 +4,7 @@ module.exports.homelist = function(req, res, next){
 };
 
 /* get location info page */
-module.exports.loactionInfo = function(req, res, next){
+module.exports.locationInfo = function(req, res, next){
 	res.render('index', {title: 'Location Info'});
 };
 
