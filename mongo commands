@@ -1,0 +1,127 @@
+db.locations.save({
+	name: 'HackerLab',
+	address: '1715 L Street, Sacramento, CA  95811',
+	rating: 4,
+	facilities: ['hot drinks', 'coworking space', 'premium wifi'],
+	coords: [38.5790660,-121.4827300],
+	openingTimes: [{
+		days: 'Sunday-Saturday',
+		opening: '12:00 am',
+		closing: '12:00 am',
+		closed: false
+	}]
+})
+
+db.locations.update({
+	name: 'HackerLab'
+}, {
+	$push: {
+		reviews: {
+			author: 'Thomas Hodges',
+			id: ObjectId(),
+			rating: 5,
+			timestamp: new Date("Oct 30 2016"),
+			reviewText: 'Good coworking space.  Some of the regulars here are annoying.'
+		}
+	}
+})
+
+db.locations.update({
+	name: 'HackerLab'
+}, {
+	$push: {
+		reviews: {
+			author: 'Theodore Roosevelt',
+			id: ObjectId(),
+			rating: 4,
+			timestamp: new Date(),
+			reviewText: 'This is the new deal.'
+		}
+	}
+})
+
+
+/// new locations:
+
+db.locations.save({
+	name: 'Tupelo Coffee Hoyse',
+	address: '5700 Elvas Ave, Sacramento, CA 95819',
+	rating: 5,
+	facilities: ['hot drinks', 'pasteries', 'pleanty of seating'],
+	coords: [38.5685520,-121.4340930],
+	openingTimes: [{
+		days: 'Monday-Sunday',
+		opening: '6:00 am',
+		closing: '11:00 pm',
+		closed: false
+	}]
+})
+
+
+db.locations.update({
+	name: 'Tupelo Coffee Hoyse'
+}, {
+	$set: {
+		name: 'Tupelo Coffee House'
+	}
+}
+
+db.locations.update({
+	name: 'Tupelo Coffee House'
+}, {
+	$push: {
+		reviews: {
+			author: 'Kathryn Panger',
+			id: ObjectId(),
+			rating: 4,
+			timestamp: new Date(),
+			reviewText: 'Nice but kind of cold.'
+		}
+	}
+})
+
+db.locations.save({
+	name: 'Temple Coffee',
+	address: '2600 Fair Oaks Blvd Ste 101, Sacramento, CA 95864',
+	rating: 4,
+	facilities: ['hot drinks', 'pasteries', 'premium coffee'],
+	coords: [38.5738390,-121.4010500],
+	openingTimes: [{
+		days: 'Monday-Sunday',
+		opening: '6:00 am',
+		closing: '10:00 pm',
+		closed: false
+	}]
+})
+
+db.locations.update({
+	name: 'Temple Coffee'
+}, {
+	$push: {
+		reviews: {
+			author: 'Thomas Hodges',
+			id: ObjectId(),
+			rating: 5,
+			timestamp: new Date(),
+			reviewText: 'Friendly but expensive.'
+		}
+	}
+})
+
+
+
+database via mongo:
+mongo ds021915.mlab.com:21915/loc8r-dev -u thodges -p password
+
+mongo uri:
+mongodb://thodges:password@ds021915.mlab.com:21915/loc8r-dev
+
+username:		thodges
+password:		password
+server address:	ds021915.mlab.com
+port:			21915
+database name:	loc8r-dev
+
+mongorestore --host ds021915.mlab.com --port 21915 --db loc8r-dev --username thodges --password password ~/tmp/mongodump/Loc8r
+
+mongo ds021915.mlab.com:21915/loc8r-dev -u thodges -p password
